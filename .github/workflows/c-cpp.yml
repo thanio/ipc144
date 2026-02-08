@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Build Lab 4
+      - name: Compile Lab 4
         run: |
-          gcc -Wall -Wextra -std=c11 -I. lab4.c lab4main.c -o lab4
+          gcc -Wall -Wextra -std=c11 lab4.c lab4main.c -o lab4
 
-      - name: Run (optional)
+      - name: Run Lab 4 (exit immediately)
         run: |
-          ./lab4 << EOF
-          0
-          EOF
+          echo 0 | ./lab4
