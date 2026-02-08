@@ -8,16 +8,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      - uses: actions/checkout@v4
+
+      - name: Build Lab 4
+        run: |
+          gcc -Wall -Wextra -std=c11 -I. lab4.c lab4main.c -o lab4
+
+      - name: Run (optional)
+        run: |
+          ./lab4 << EOF
+          0
+          EOF
